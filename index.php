@@ -17,143 +17,117 @@ if(isset($_POST["asc"])) krsort($clientes);
 
 if(isset($_POST["desc"])) ksort($clientes);
 
+require_once ('header.php');
+
 ?>
 
-<html>
+<button type="submit" value="asc" name="asc" class="btn btn-primary">Ascendente</button>
+<button type="submit" value="desc" name="desc" class="btn btn-primary">Descendente</button>
 
-    <head>
-        <title>Primeira Pagina </title>
-        <meta charset="utf-8">
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <!-- Chamadas JS -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-    </head>
-
-    <body>
-
-    <form action="" name="_form" method="post" enctype="multipart/form-data">
-
-        <nav role="navigation" class="navbar navbar-default">
-
-            <div class="navbar-header">
-                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-                    <span class="sr-only">Navegação Responsiva</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="#" class="navbar-brand">Home</a>
+<div class="modal fade bs-example-modal-lg" id="teste" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Cliente</h4>
             </div>
-        </nav>
-
-        <button type="submit" value="asc" name="asc" class="btn btn-primary">Ascendente</button>
-        <button type="submit" value="desc" name="desc" class="btn btn-primary">Descendente</button>
-
-        <div class="modal fade bs-example-modal-lg" id="teste" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Cliente</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Nome" value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="endereco">Endereço</label>
-                            <input type="text" class="form-control" id="endereco" placeholder="Endereço" value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="cidade">Cidade</label>
-                            <input type="text" class="form-control" id="cidade" placeholder="Cidade" value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="uf">UF</label>
-                            <input type="text" class="form-control" id="estado" placeholder="UF" value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="cpf">CPF</label>
-                            <input type="text" class="form-control" id="cpf" placeholder="CPF" value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="telefone">Telefone</label>
-                            <input type="telefone" class="form-control" id="telefone" placeholder="Telefone" value="">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email" value="">
-                        </div>
-                    </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Nome" value="">
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" placeholder="Endereço" value="">
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" class="form-control" id="cidade" placeholder="Cidade" value="">
+                </div>
+                <div class="form-group">
+                    <label for="uf">UF</label>
+                    <input type="text" class="form-control" id="estado" placeholder="UF" value="">
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf" placeholder="CPF" value="">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="telefone" class="form-control" id="telefone" placeholder="Telefone" value="">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" value="">
                 </div>
             </div>
         </div>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Endereço</th>
-                <th>Cidade</th>
-                <th>UF</th>
-                <th>CPF</th>
-                <th>Telefone</th>
-                <th>Email</th>
-                <th></th>
-            </tr>
-            <?php
-                foreach ($clientes as $cliente)
-                {
-                    echo '<tr>';
-                        echo '<td>' . $cliente['nome'] . '</td>';
-                        echo '<td>' . $cliente['endereco'] . '</td>';
-                        echo '<td>' . $cliente['cidade'] . '</td>';
-                        echo '<td>' . $cliente['estado'] . '</td>';
-                        echo '<td>' . $cliente['cpf'] . '</td>';
-                        echo '<td>' . $cliente['telefone'] . '</td>';
-                        echo '<td>' . $cliente['email'] . '</td>';
-                        echo '<td><a data-toggle="modal"
-                        data-id="' . $cliente["id"] . '"
-                        data-nome="' . $cliente["nome"] . '"
-                        data-endereco="' . $cliente["endereco"] . '"
-                        data-cidade="' . $cliente["cidade"] . '"
-                        data-estado="' . $cliente["estado"] . '"
-                        data-cpf="' . $cliente["cpf"] . '"
-                        data-telefone="' . $cliente["telefone"] . '"
-                        data-email="' . $cliente["email"] . '"
-                        href="#bs-example-modal-lg" id="btn" class="btn btn-primary btn-lg active" role="button">Visualizar</a></td>';
-                    echo '</tr>';
-                }
-            ?>
-            <script>
+    </div>
+</div>
 
-                $(document).on("click", "#btn", function () {
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Cidade</th>
+        <th>UF</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+    <?php
+        foreach ($clientes as $cliente)
+        {
+            echo '<tr>';
+                echo '<td>' . $cliente['nome'] . '</td>';
+                echo '<td>' . $cliente['endereco'] . '</td>';
+                echo '<td>' . $cliente['cidade'] . '</td>';
+                echo '<td>' . $cliente['estado'] . '</td>';
+                echo '<td>' . $cliente['cpf'] . '</td>';
+                echo '<td>' . $cliente['telefone'] . '</td>';
+                echo '<td>' . $cliente['email'] . '</td>';
+                echo '<td><a data-toggle="modal"
+                data-id="' . $cliente["id"] . '"
+                data-nome="' . $cliente["nome"] . '"
+                data-endereco="' . $cliente["endereco"] . '"
+                data-cidade="' . $cliente["cidade"] . '"
+                data-estado="' . $cliente["estado"] . '"
+                data-cpf="' . $cliente["cpf"] . '"
+                data-telefone="' . $cliente["telefone"] . '"
+                data-email="' . $cliente["email"] . '"
+                href="#bs-example-modal-lg" id="btn" class="btn btn-primary btn-lg active" role="button">Visualizar</a></td>';
+            echo '</tr>';
+        }
+    ?>
+    <script>
 
-                    var id = $(this).data('id');
-                    var nome = $(this).data('nome');
-                    var endereco = $(this).data('endereco');
-                    var cidade = $(this).data('cidade');
-                    var estado = $(this).data('estado');
-                    var cpf = $(this).data('cpf');
-                    var telefone = $(this).data('telefone');
-                    var email = $(this).data('email');
+        $(document).on("click", "#btn", function () {
 
-                    $(".modal-body #Id").val(id);
-                    $(".modal-body #nome").val(nome);
-                    $(".modal-body #endereco").val(endereco);
-                    $(".modal-body #cidade").val(cidade);
-                    $(".modal-body #estado").val(estado);
-                    $(".modal-body #cpf").val(cpf);
-                    $(".modal-body #telefone").val(telefone);
-                    $(".modal-body #email").val(email);
-                    $("#teste").modal('show');
+            var id = $(this).data('id');
+            var nome = $(this).data('nome');
+            var endereco = $(this).data('endereco');
+            var cidade = $(this).data('cidade');
+            var estado = $(this).data('estado');
+            var cpf = $(this).data('cpf');
+            var telefone = $(this).data('telefone');
+            var email = $(this).data('email');
 
-                });
+            $(".modal-body #Id").val(id);
+            $(".modal-body #nome").val(nome);
+            $(".modal-body #endereco").val(endereco);
+            $(".modal-body #cidade").val(cidade);
+            $(".modal-body #estado").val(estado);
+            $(".modal-body #cpf").val(cpf);
+            $(".modal-body #telefone").val(telefone);
+            $(".modal-body #email").val(email);
+            $("#teste").modal('show');
 
-            </script>
+        });
 
-        </table>
-    </form>
-    </body>
-</html>
+    </script>
+
+</table>
+
+<?php require_once ('footer.php'); ?>
