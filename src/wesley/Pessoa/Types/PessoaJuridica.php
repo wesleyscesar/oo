@@ -1,6 +1,8 @@
 <?php
 
-class PessoaJuridica extends Pessoa
+namespace wesley\Pessoa\Types;
+
+class PessoaJuridica extends \wesley\Pessoa\Pessoa
 {
 
     private $cnpj;

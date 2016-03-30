@@ -1,6 +1,8 @@
 <?php
 
-class Pessoa implements PessoaInterface
+namespace wesley\Pessoa;
+
+class Pessoa implements \wesley\Pessoa\interfaces\PessoaInterface
 {
     private $tipo;
     private $importancia;

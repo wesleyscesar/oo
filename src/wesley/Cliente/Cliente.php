@@ -1,6 +1,6 @@
 <?php
 
-require_once ("./config/conexao.php");
+namespace wesley\Cliente;
 
 class Cliente
 {
@@ -155,7 +155,5 @@ class Cliente
     {
         $this->pessoa = $pessoa;
     }
-
-
 
 }

@@ -1,6 +1,8 @@
 <?php
 
-class PessoaFisica extends Pessoa
+namespace wesley\Pessoa\Types;
+
+class PessoaFisica extends \wesley\Pessoa\Pessoa
 {
 
     private $cpf;

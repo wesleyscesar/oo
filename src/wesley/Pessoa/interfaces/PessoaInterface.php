@@ -1,5 +1,7 @@
 <?php
 
+namespace wesley\Pessoa\interfaces;
+
 interface PessoaInterface
 {
     public function getTipo();
