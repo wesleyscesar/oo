@@ -8,7 +8,11 @@ spl_autoload_register(function ($class){
     require_once(str_replace('\\','/',$class . '.php'));
 });
 
-$cliente = new wesley\Cliente\Cliente();
+$conexao = new wesley\Config\Conexao();
+$fixtures = new wesley\Config\Fixtures($conexao);
+$cliente = new wesley\Cliente\Cliente($conexao);
+
+$fixtures->flush($cliente);
 
 if(isset($_POST["asc"])) $str = "asc";
 
@@ -30,8 +34,7 @@ if(isset($_POST["desc"])) $str = "desc";
         <th></th>
     </tr>
     <?php
-
-        $cliente->getCliente($str);
+        $cliente->findAll($str);
     ?>
     <script>
 
